@@ -1,0 +1,27 @@
+# 构建中间文件
+build/
+
+# 压缩包（已有 w_to_PDF 发布目录）
+*.zip
+
+# 日志与临时文件
+*.log
+__pycache__/
+*.pyc
+*.pyo
+
+# 无关脚本（非本软件代码）
+1.py
+2.py
+everything.py
+pachong.py
+cursor.py
+auto_comment.py
+set copy.py
+index.html
+style.css
+
+# IDE
+.vscode/
+.idea/
+*.swp

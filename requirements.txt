@@ -1,0 +1,5 @@
+comtypes
+psutil
+pywin32
+tkinterdnd2
+cx_Freeze
