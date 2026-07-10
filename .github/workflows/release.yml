@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Package executable
+        shell: pwsh
+        run: |
+          Compress-Archive -Path w_to_PDF -DestinationPath WordToPDF-v${{ github.ref_name }}.zip -Force
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Word转PDF ${{ github.ref_name }}
+          body: |
+            ## Word 转 PDF 批量转换工具 ${{ github.ref_name }}
+
+            ### 使用方法
+            1. 下载 `WordToPDF-${{ github.ref_name }}.zip`
+            2. 解压后进入 `w_to_PDF` 目录
+            3. 双击运行 `w_to_p.exe`
+
+            > 需要本机已安装 Microsoft Word。
+          files: |
+            WordToPDF-${{ github.ref_name }}.zip
+          draft: false
+          prerelease: false
