@@ -18,7 +18,7 @@ jobs:
       - name: Package executable
         shell: pwsh
         run: |
-          Compress-Archive -Path w_to_PDF -DestinationPath WordToPDF-v${{ github.ref_name }}.zip -Force
+          Compress-Archive -Path w_to_PDF -DestinationPath WordToPDF-${{ github.ref_name }}.zip -Force
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
